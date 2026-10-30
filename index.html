@@ -2874,6 +2874,8 @@ body.wvopen { overflow: hidden; }
       'Night and day cases are simplified from IMO Annex 3, 4.1 and 4.2: persons on board are the berths; night, all in their cabins; day, public spaces at 75% of capacity, work and service spaces full, the rest in cabins.',
       'Indicative only, for early comparison of arrangements.'
     ].forEach(function (t) { para('• ' + t, 8.5); });
+    sub('Disclaimer');
+    para('For research and education only. Ship Evacuation is a research and teaching tool for early ship design. Its results are indicative and not validated: it is not an evacuation analysis under IMO MSC.1/Circ.1533 and must not be used for design approval, certification or safety decisions. Provided as is, without warranty of any kind; the authors and NTNU accept no liability for its use.', 8.5);
     sub('References');
     ['Hinz T, Gaspar HM, Bierkowska K, Mazerski G. Simulating and visualizing persons movement in deck arrangements: a web-based approach. PRADS 2025.',
       'IMO. MSC.1/Circ.1533, Revised guidelines on evacuation analysis for new and existing passenger ships, 2016.',
@@ -3792,7 +3794,8 @@ body.wvopen { overflow: hidden; }
       '<li>Turn on <b>Trails</b> to see the paths and <b>Density</b> to see where people crowded. <b>Plan</b> gives a view from above; pick a <b>Deck</b> to look at one deck.</li>' +
       '<li>Click a block to see it and change its space type, berths or capacity, persons, population and doors (width and position). Click a person to follow them. The run resets after a change.</li>' +
       '<li>When the run ends, the tabs below give the <b>Summary</b> (assembly time, density, congestion, muster space), the <b>Flows</b> through each door and stair, every <b>Person</b>, the <b>Model</b> and populations, and the <b>Results</b> charts. <b>PDF report</b> makes a report of the case and the run with views, charts and tables. The paths, persons and results also export as CSV or JSON.</li>' +
-      '</ol><p class="note">Indicative only, for early comparison of arrangements. One run is one random population; the IMO procedure needs many runs and is not complete here.</p>';
+      '</ol><p class="note">Indicative only, for early comparison of arrangements. One run is one random population; the IMO procedure needs many runs and is not complete here.</p>' +
+      '<p class="note"><b>Disclaimer.</b> For research and education only. Ship Evacuation is a research and teaching tool for early ship design. Its results are indicative and not validated: it is not an evacuation analysis under IMO MSC.1/Circ.1533 and must not be used for design approval, certification or safety decisions. Provided as is, without warranty of any kind; the authors and NTNU accept no liability for its use.</p>';
   }
   function helpFormat() {
     return '<div class="fmt"><p class="aboutp">The tool reads the DBB Editor project format: a list of blocks with a centre <code>position</code>, a <code>size</code> and a <code>rotation</code>, in metres, x forward from the aft end, y to port, z up. Evacuation data goes in an optional <code>evac</code> field on each block, which the DBB Editor does not use yet. A block without it is an obstacle where it fills the walking height of a deck.</p>' +
@@ -3833,6 +3836,7 @@ body.wvopen { overflow: hidden; }
       '<li><b>Paper:</b> Tomasz Hinz (Gdansk Tech, Deltamarin), Henrique M. Gaspar and Karolina Bierkowska (NTNU, Alesund), Grzegorz Mazerski (Deltamarin), PRADS 2025.</li>' +
       '<li><b>This app:</b> Henrique M. Gaspar (NTNU), <a href="https://github.com/shiplab/evac" target="_blank" rel="noopener">github.com/shiplab/evac</a>, with the block format, style and PDF writer of the <a href="https://shiplab.github.io/dbb/" target="_blank" rel="noopener">Ship Design Building Block Editor</a> (NTNU, IMDC 2024, doi:10.59490/imdc.2024.915). Code written with the help of Claude (Anthropic), an AI assistant, under the direction of the author.</li>' +
       '<li><b>Funding:</b> the research behind the PRADS 2025 paper was partly connected to the Smart European Shipbuilding (SEUS) project, Horizon Europe grant agreement No 101096224.</li></ul>' +
+      '<h3>Disclaimer</h3><p class="aboutp">For research and education only. Ship Evacuation is a research and teaching tool for early ship design. Its results are indicative and not validated: it is not an evacuation analysis under IMO MSC.1/Circ.1533 and must not be used for design approval, certification or safety decisions. Provided as is, without warranty of any kind; the authors and NTNU accept no liability for its use.</p>' +
       '<h3>References</h3><ul class="refs">' +
       '<li>Hinz T, Gaspar HM, Bierkowska K, Mazerski G. Simulating and visualizing persons movement in deck arrangements: a web-based approach. PRADS 2025, Ann Arbor.</li>' +
       '<li>Hinz T, Gaspar HM. Ship Corridor Creator v0.1, web app, 2024. Hinz T, Gaspar HM, Rodriguez Perez JA. Ship Evacuation v0.2, web app, 2025.</li>' +

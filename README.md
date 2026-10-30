@@ -16,7 +16,9 @@ By Henrique M. Gaspar (NTNU). Based on the Ship Corridor Creator (T. Hinz, H. M.
 - Gives the assembly time, the arrival curve, door and stair flows, the highest density and congestion, the muster space, and the route of every person, with live charts and density maps.
 - Writes a PDF report of the case and the run, CSV and JSON exports, and saves the layout as a DBB project.
 
-Indicative only, for early comparison of arrangements. One run is one random population, not an IMO evacuation analysis.
+> **For research and education only.** Results are indicative and not validated. This is not an evacuation analysis under IMO MSC.1/Circ.1533 and must not be used for design approval, certification or safety decisions. See the [disclaimer](#disclaimer).
+
+One run is one random population, for early comparison of arrangements.
 
 ## Start
 
@@ -65,6 +67,10 @@ Every other field of a DBB project passes through untouched. A DBB project opene
 - **Paper:** Hinz, T., Gaspar, H. M., Bierkowska, K. and Mazerski, G. (2025). Simulating and visualizing persons movement in deck arrangements: a web-based approach. PRADS 2025, Ann Arbor, MI, USA.
 - **This app:** Henrique M. Gaspar (NTNU), with the block format, style and PDF writer of the [Ship Design Building Block Editor](https://shiplab.github.io/dbb/) (IMDC 2024, [doi:10.59490/imdc.2024.915](https://doi.org/10.59490/imdc.2024.915)). Code written with the help of Claude (Anthropic), an AI assistant, under the direction of the author.
 - **Funding:** the research behind the PRADS 2025 paper was partly connected to the Smart European Shipbuilding (SEUS) project, Horizon Europe grant agreement No 101096224.
+
+## Disclaimer
+
+For research and education only. Ship Evacuation is a research and teaching tool for early ship design. Its results are indicative and not validated: it is not an evacuation analysis under IMO MSC.1/Circ.1533 and must not be used for design approval, certification or safety decisions. Provided as is, without warranty of any kind; the authors and NTNU accept no liability for its use.
 
 ## References
 

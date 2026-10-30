@@ -4,7 +4,7 @@
 
 A web tool that simulates persons walking to the muster stations of a ship general arrangement, for early ship design. It reads the block format of the [Ship Design Building Block (DBB) Editor](https://shiplab.github.io/dbb/) and adds an optional `evac` field to each block. One HTML page, no installation; runs in any modern browser.
 
-By Henrique M. Gaspar (NTNU). Based on the Ship Corridor Creator (T. Hinz, H. M. Gaspar, J. A. Rodriguez Perez) and the PRADS 2025 paper by T. Hinz, H. M. Gaspar, K. Bierkowska and G. Mazerski. Version 1.0.0, October 2026.
+By Henrique M. Gaspar (NTNU). Based on the Ship Corridor Creator (T. Hinz, H. M. Gaspar, J. A. Rodriguez Perez) and the PRADS 2025 paper by T. Hinz, H. M. Gaspar, K. Bierkowska and G. Mazerski. Version 1.1.0, October 2026.
 
 [![Ship Evacuation: an accommodation deck during a run, with the density map and the live results](screenshot.png)](https://shiplab.github.io/evac/)
 
@@ -14,6 +14,7 @@ By Henrique M. Gaspar (NTNU). Based on the Ship Corridor Creator (T. Hinz, H. M.
 - Fills them with persons from the IMO MSC.1/Circ.1533 population (age, gender and mobility groups, with their walking speeds on floors and stairs), as set per block or for the IMO night and day cases.
 - Moves every person along the shortest route to a muster station with a Social Force model, and shows them walking in 3D.
 - Gives the assembly time, the arrival curve, door and stair flows, the highest density and congestion, the muster space, and the route of every person, with live charts and density maps.
+- Adds fire or flood sources: a front that spreads from a block at a set speed and leaves rooms only through their doors. An open door lets it in at once; fire waits at closed doors and fire doors, water only at watertight doors. Inside a room it enters it spreads fast; on stairs fire climbs fast and water slowly. It catches the persons it reaches. Results give the persons caught, the spaces and doors reached, and when the hazard reaches the muster stations.
 - Writes a PDF report of the case and the run, CSV and JSON exports, and saves the layout as a DBB project.
 
 > **For research and education only.** Results are indicative and not validated. This is not an evacuation analysis under IMO MSC.1/Circ.1533 and must not be used for design approval, certification or safety decisions. See the [disclaimer](#disclaimer).
@@ -30,7 +31,7 @@ One run is one random population, for early comparison of arrangements.
 
 The **How to** button in the app has the steps, the file format, a glossary and the credits.
 
-Examples in the app: an SOV accommodation deck, the same deck with equipment (obstacles), two decks with a stair, and IMO Test 4 (flow through a door). **Save** on an example gives a project file to start from.
+Examples in the app: an SOV accommodation deck, the same deck with equipment (obstacles), two decks with a stair, the Océane Cruise Ship (10 decks, 177 blocks, 100 cabins, 200 persons, made in the DBB Editor), a fire in the laundry of the SOV deck (door left open, fire doors to the mess), a flood in the workshop of the two decks (watertight doors on the aft cabins), and IMO Test 4 (flow through a door). **Save** on an example gives a project file to start from.
 
 ## The evac field
 
@@ -38,13 +39,13 @@ Examples in the app: an SOV accommodation deck, the same deck with equipment (ob
 { "id": "cabP1", "name": "Cabin P1", "shape": "box", "group": "g_acc",
   "position": [31, 5.3, 11.8], "size": [4, 3.4, 2.6], "rotation": [0, 0, 0],
   "evac": { "role": "room", "space": "cabin", "capacity": 2, "occupants": 2,
-            "doors": [{ "face": "-y", "offset": 1.2, "width": 0.8 }] } }
+            "doors": [{ "face": "-y", "offset": 1.2, "width": 0.8, "type": "fire" }] } }
 ```
 
 - `role`: `room`, `corridor`, `open`, `stair`, `muster` or `obstacle`. A block without `evac` is an obstacle where it fills the walking height of a deck (0.3 to 1.0 m above it).
 - Decks come from the bottoms of the walkable blocks. Rooms are entered only through their `doors`; corridors, open deck and muster stations that touch are open to each other. Stairs join one deck to the next.
-- `space`, `capacity`, `occupants`, `population` and `muster` set the persons of a block.
-- The top-level `evacuation` object holds the scenario (case, population, response, seed, project populations) and `results`, the summary of the last run with a signature of the arrangement, so a result shows as out of date when a block moves.
+- `space`, `capacity`, `occupants`, `population` and `muster` set the persons of a block. A door `type` (`open`, `closed`, `fire`, `watertight`) sets how long it holds a fire or flood back (open: never; water passes all but watertight).
+- The top-level `evacuation` object holds the scenario (case, population, response, seed, project populations, `hazards` and the door holding times `doorHold`) and `results`, the summary of the last run with a signature of the arrangement, so a result shows as out of date when a block moves.
 
 Every other field of a DBB project passes through untouched. A DBB project opened from disk keeps its arrangement read-only: Save changes only `evacuation`. The full field tables are under How to, Format, in the app.
 
@@ -54,7 +55,8 @@ Every other field of a DBB project passes through untouched. A DBB project opene
 - Route: shortest walking distance to the muster station over a 0.1 m grid on all decks, linked at the stairs, kept a little off the walls.
 - Movement: Social Force model (Helbing and Molnár; FDS+Evac; Montecchiari, Bulian and Gallina), one circle per person, calibrated on IMO Test 4 (1.1 to 1.25 persons/s through a 1 m door; IMO limit 1.33).
 - Checked against IMO Tests 1, 2, 4, 5, 6 and 7.
-- Not yet: repeated runs and the 95th percentile over runs, crew moving against the flow, fire or flooding cases, ship motions.
+- Fire and flood: moving fronts at speeds you set, held back by doors for times you set, filling a room they enter at 1 m/s, and climbing stairs at 4 (fire) or 0.1 (water) times their speed; all editable in the Model tab. Persons do not react to them. No smoke, heat, toxic gas, water depth or ship motion.
+- Not yet: repeated runs and the 95th percentile over runs, persons reacting to a hazard, crew moving against the flow, ship motions.
 
 ## Files
 

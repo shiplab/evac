@@ -4,7 +4,7 @@
 
 A web tool that simulates persons walking to the muster stations of a ship general arrangement, for early ship design. It reads the block format of the [Ship Design Building Block (DBB) Editor](https://shiplab.github.io/dbb/) and adds an optional `evac` field to each block. One HTML page, no installation; runs in any modern browser.
 
-By Henrique M. Gaspar (NTNU). Based on the Ship Corridor Creator (T. Hinz, H. M. Gaspar, J. A. Rodriguez Perez) and the PRADS 2025 paper by T. Hinz, H. M. Gaspar, K. Bierkowska and G. Mazerski. Version 1.1.0, October 2026.
+By Henrique M. Gaspar (NTNU). Based on the Ship Corridor Creator (T. Hinz, H. M. Gaspar, J. A. Rodriguez Perez) and the PRADS 2025 paper by T. Hinz, H. M. Gaspar, K. Bierkowska and G. Mazerski. Version 1.1.1, October 2026.
 
 [![Ship Evacuation: an accommodation deck during a run, with the density map and the live results](screenshot.png)](https://shiplab.github.io/evac/)
 
@@ -31,7 +31,7 @@ One run is one random population, for early comparison of arrangements.
 
 The **How to** button in the app has the steps, the file format, a glossary and the credits.
 
-Examples in the app: an SOV accommodation deck, the same deck with equipment (obstacles), two decks with a stair, the Océane Cruise Ship (10 decks, 177 blocks, 100 cabins, 200 persons, made in the DBB Editor), a fire in the laundry of the SOV deck (door left open, fire doors to the mess), a flood in the workshop of the two decks (watertight doors on the aft cabins), and IMO Test 4 (flow through a door). **Save** on an example gives a project file to start from.
+Examples in the app: an SOV accommodation deck, the same deck with equipment (obstacles), two decks with a stair, the Océane Cruise Ship (10 decks, 177 blocks, 100 cabins, 200 persons, made in the DBB Editor, muster stations on the top deck) and the same ship with a rapid fire in the galley and with a rapid flood from the engine room, a fire in the laundry of the SOV deck (door left open, fire doors to the mess), a flood in the workshop of the two decks (watertight doors on the aft cabins), and IMO Test 4 (flow through a door). **Save** on an example gives a project file to start from.
 
 ## The evac field
 
